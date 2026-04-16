@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Efeito Janeiro no Brasil</title>
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +19,7 @@
 
         .container {
             width: 92%;
-            max-width: 1400px;
+            max-width: 1450px;
             margin: 0 auto;
             padding: 24px 0 48px 0;
         }
@@ -88,6 +90,16 @@
             line-height: 1.8;
             color: #374151;
             padding-left: 22px;
+        }
+
+        .subsection-block {
+            margin-top: 10px;
+            margin-bottom: 18px;
+        }
+
+        .subsection-block h3 {
+            margin-bottom: 14px;
+            color: #111827;
         }
 
         .grid-2 {
@@ -237,7 +249,7 @@
 
         .takeaways {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: 1fr;
             gap: 16px;
             margin-top: 18px;
         }
@@ -262,7 +274,7 @@
             color: rgba(255,255,255,0.88);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 980px) {
             .executive-summary {
                 grid-template-columns: 1fr;
             }
@@ -274,8 +286,14 @@
 
         <div class="hero">
             <h1>Efeito Janeiro no Brasil</h1>
-            <p>Uma análise empírica do desempenho relativo entre small caps proxy e large caps proxy no mercado acionário brasileiro.</p>
-            <p>O estudo utiliza liquidez como proxy de tamanho, compara a janela dezembro→janeiro com janelas de controle e combina evidência econômica, estatística e visual.</p>
+            <p>
+                Uma análise empírica do desempenho relativo entre ações de menor liquidez e maior liquidez
+                no mercado acionário brasileiro.
+            </p>
+            <p>
+                O estudo utiliza liquidez como proxy de tamanho e combina evidência econômica,
+                testes estatísticos e comparações com janelas de controle ao longo do ano.
+            </p>
 
             <div class="nav">
                 <a href="#introducao">Introdução</a>
@@ -293,29 +311,31 @@
         <h2>Resumo Executivo</h2>
         <p>
             Este projeto investiga a existência do <b>efeito janeiro</b> no mercado acionário brasileiro,
-            comparando o desempenho de ações de menor e maior liquidez.
+            comparando o desempenho relativo entre ações de <b>menor liquidez</b> e <b>maior liquidez</b>.
         </p>
         <p>
-            A análise utiliza a liquidez como proxy de tamanho e avalia se ações menos líquidas
-            apresentam desempenho superior na janela de dezembro→janeiro em relação a outras janelas do ano.
+            A liquidez é utilizada como <b>proxy de tamanho</b>, e não como market cap observado diretamente.
+            O foco central do estudo é verificar se a janela <b>dezembro→janeiro</b> apresenta um spread
+            small-minus-large economicamente relevante e como esse comportamento se compara a janelas de controle
+            em outros períodos do ano.
         </p>
 
         <div class="highlight-grid">
             <div class="highlight-card">
-                <span class="label">Pergunta central</span>
-                <div class="value">Existe efeito janeiro no Brasil?</div>
-            </div>
-            <div class="highlight-card">
-                <span class="label">Proxy</span>
+                <span class="label">Proxy utilizada</span>
                 <div class="value">Liquidez média de novembro</div>
             </div>
             <div class="highlight-card">
-                <span class="label">Comparação</span>
+                <span class="label">Recorte dos grupos</span>
                 <div class="value">Bottom 30% vs Top 30%</div>
             </div>
             <div class="highlight-card">
-                <span class="label">Métodos</span>
-                <div class="value">Testes estatísticos + análise temporal</div>
+                <span class="label">Janela principal</span>
+                <div class="value">Dezembro → Janeiro</div>
+            </div>
+            <div class="highlight-card">
+                <span class="label">Anos avaliados</span>
+                <div class="value">15</div>
             </div>
         </div>
     </div>
@@ -324,20 +344,33 @@
         <h2>Key Takeaways</h2>
         <div class="takeaways">
             <div class="takeaway-card">
-                <h3>Evidência econômica consistente</h3>
-                <p>O spread médio em dezembro→janeiro foi o maior entre as janelas analisadas.</p>
+                <h3>Maior spread médio na virada do ano</h3>
+                <p>
+                    A janela dezembro→janeiro apresentou spread médio de <b>0.035</b>,
+                    positivo em <b>66.7%</b> dos anos analisados.
+                </p>
             </div>
             <div class="takeaway-card">
-                <h3>Evidência estatística moderada</h3>
-                <p>O efeito foi significativo, mas próximo ao limite de 5%, indicando robustez limitada.</p>
+                <h3>Sinal estatístico favorável contra zero</h3>
+                <p>
+                    Na janela principal, os testes contra zero resultaram em
+                    <b>p_t=0.0356</b> e
+                    <b>p_perm=0.0363</b>.
+                </p>
             </div>
             <div class="takeaway-card">
-                <h3>Sensibilidade a eventos extremos</h3>
-                <p>O gráfico mostra que 2020 teve impacto relevante no resultado, elevando o spread médio.</p>
+                <h3>Comparação com controles mais fraca</h3>
+                <p>
+                    A comparação mais favorável foi contra <b>mar_abr</b>,
+                    com diferença média de <b>0.037</b>, mas sem robustez após ajuste de Holm.
+                </p>
             </div>
             <div class="takeaway-card">
-                <h3>Efeito não totalmente estável</h3>
-                <p>Outras janelas também apresentam spreads positivos, embora menos consistentes.</p>
+                <h3>Evidência mais plausível que definitiva</h3>
+                <p>
+                    Os resultados sustentam um padrão economicamente interessante para a janela dezembro→janeiro,
+                    mas não uma superioridade estatística forte e estável sobre todas as janelas de controle.
+                </p>
             </div>
         </div>
     </div>
@@ -353,20 +386,21 @@
 <div class="texto-livre">
     <p>
         O chamado <b>efeito janeiro</b> é uma das anomalias sazonais mais conhecidas da literatura financeira.
-        Em termos gerais, a hipótese sugere que ações menores ou menos negociadas tendem a apresentar
-        desempenho relativamente superior no início do ano.
+        Em linhas gerais, a hipótese sugere que ações menores ou menos negociadas tendem a apresentar
+        desempenho relativamente superior na virada do ano.
     </p>
 
     <p>
-        Como a base histórica não dispõe de market cap confiável para todo o período, este estudo utiliza
-        a <b>liquidez média de novembro</b> como proxy de tamanho, classificando os ativos em grupos de
-        menor e maior liquidez antes da janela analisada.
+        Como esta base não utiliza market cap histórico consolidado para todo o período, o estudo adota
+        a <b>liquidez média de novembro</b> como <b>proxy de tamanho</b>. Assim, a leitura correta do projeto
+        não é “small caps medidas diretamente por capitalização”, mas sim uma comparação entre
+        <b>ações de menor liquidez</b> e <b>ações de maior liquidez</b>.
     </p>
 
     <p>
-        O estudo compara o retorno das carteiras formadas com o <b>bottom 30%</b> e o <b>top 30%</b>
-        da distribuição de liquidez, observando a janela principal de dezembro→janeiro e também outras
-        janelas de controle ao longo do ano.
+        O objetivo central não é apenas verificar se o spread small-minus-large é positivo em
+        dezembro→janeiro, mas também se essa janela se destaca frente a janelas de controle
+        como março→abril, abril→maio, julho→agosto e agosto→setembro.
     </p>
 </div>
 
@@ -382,48 +416,44 @@
         
 <div class="texto-livre">
     <p>
-        A base foi preparada com dados históricos por ticker, contendo data, preço ajustado
-        (<b>close_adj</b>) e volume financeiro (<b>volume_fin</b>).
-    </p>
-
-    <p>
-        Para cada ano da amostra, foi calculada a liquidez média de novembro, utilizada como critério
-        de classificação dos ativos.
+        A base foi construída com dados históricos por ticker, contendo data, preço ajustado e volume financeiro.
+        Para cada ano da amostra, foi calculada a <b>liquidez média de novembro</b>, utilizada como critério de classificação dos ativos.
     </p>
 
     <ul>
-        <li><b>Small caps proxy:</b> bottom 30% em liquidez</li>
-        <li><b>Large caps proxy:</b> top 30% em liquidez</li>
-        <li><b>40% centrais:</b> excluídos para aumentar o contraste</li>
+        <li><b>Small caps proxy por liquidez:</b> bottom 30% em liquidez</li>
+        <li><b>Large caps proxy por liquidez:</b> top 30% em liquidez</li>
+        <li><b>Faixa central:</b> excluída para aumentar o contraste entre os grupos</li>
     </ul>
 
     <p>
-        A janela principal foi definida como:
+        A janela principal foi definida entre o primeiro pregão após meados de dezembro e o último pregão útil de janeiro.
+        Além disso, foram construídas janelas de controle ao longo do ano para avaliar se o comportamento de dezembro→janeiro
+        se destaca em relação a outros períodos.
+    </p>
+
+    <p>
+        A análise estatística foi estruturada em <b>duas camadas</b>:
     </p>
 
     <ul>
-        <li><b>Entrada:</b> primeiro pregão após 15 de dezembro</li>
-        <li><b>Saída:</b> último pregão útil de janeiro</li>
+        <li><b>Testes contra zero</b>, avaliando se o spread da janela é positivo;</li>
+        <li><b>Testes pareados</b>, comparando <b>dez_jan</b> com cada janela de controle ano a ano.</li>
     </ul>
 
     <p>
-        Além da janela principal, também foram testadas janelas de controle, como março→abril,
-        abril→maio, julho→agosto e agosto→setembro.
-    </p>
-
-    <p>
-        Na etapa estatística, foram utilizados:
+        Foram utilizados:
     </p>
 
     <ul>
-        <li><b>Teste t unilateral</b> para verificar se o spread médio é maior que zero</li>
-        <li><b>Teste de permutação</b> para robustez empírica</li>
-        <li><b>Estatísticas descritivas</b> para medir consistência do efeito ao longo dos anos</li>
+        <li><b>Teste t unilateral</b> e <b>teste de permutação</b> contra zero;</li>
+        <li><b>Wilcoxon pareado unilateral</b> e <b>permutação pareada</b> para a hipótese central;</li>
+        <li><b>Ajuste de Holm</b> nas comparações múltiplas contra as janelas de controle.</li>
     </ul>
 
     <p>
-        Os retornos foram calculados com base em <b>preços ajustados</b>, buscando refletir melhor o
-        retorno econômico total dos ativos.
+        Esse desenho permite separar duas perguntas diferentes:
+        se a janela principal é positiva em si mesma e se ela realmente se destaca em relação às janelas de controle.
     </p>
 </div>
 
@@ -435,8 +465,12 @@
             
     <section class="section">
         <h2>Tabelas</h2>
-        <p class='section-desc'>Saídas principais do projeto com filtro, ordenação e scroll.</p>
+        <p class='section-desc'>Tabelas principais da amostra, das janelas, dos testes e das comparações pareadas.</p>
         
+<div class="subsection-block">
+    <h3>Base e Formação das Carteiras</h3>
+</div>
+
             <div class="table-block">
                 <h3>Amostra Anual de Ativos Elegíveis</h3>
                 <div class="table-wrapper">
@@ -535,7 +569,6 @@
                     <table class="dataframe display nowrap compact">
   <thead>
     <tr style="text-align: center;">
-      <th>grupo</th>
       <th>ano</th>
       <th>large</th>
       <th>small</th>
@@ -546,7 +579,6 @@
   </thead>
   <tbody>
     <tr>
-      <th></th>
       <td>2011</td>
       <td>-0.031594</td>
       <td>-0.025558</td>
@@ -555,7 +587,6 @@
       <td>73</td>
     </tr>
     <tr>
-      <th></th>
       <td>2012</td>
       <td>0.085510</td>
       <td>0.090151</td>
@@ -564,7 +595,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2013</td>
       <td>0.029233</td>
       <td>0.012623</td>
@@ -573,7 +603,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2014</td>
       <td>-0.048711</td>
       <td>-0.000309</td>
@@ -582,7 +611,6 @@
       <td>74</td>
     </tr>
     <tr>
-      <th></th>
       <td>2015</td>
       <td>-0.022156</td>
       <td>-0.012170</td>
@@ -591,7 +619,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2016</td>
       <td>-0.096363</td>
       <td>-0.027754</td>
@@ -600,7 +627,6 @@
       <td>67</td>
     </tr>
     <tr>
-      <th></th>
       <td>2017</td>
       <td>0.126276</td>
       <td>0.203522</td>
@@ -609,7 +635,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2018</td>
       <td>0.132813</td>
       <td>0.083854</td>
@@ -618,7 +643,6 @@
       <td>81</td>
     </tr>
     <tr>
-      <th></th>
       <td>2019</td>
       <td>0.164028</td>
       <td>0.196234</td>
@@ -627,7 +651,6 @@
       <td>86</td>
     </tr>
     <tr>
-      <th></th>
       <td>2020</td>
       <td>0.069710</td>
       <td>0.217661</td>
@@ -636,7 +659,6 @@
       <td>93</td>
     </tr>
     <tr>
-      <th></th>
       <td>2021</td>
       <td>0.013148</td>
       <td>0.060361</td>
@@ -645,7 +667,6 @@
       <td>103</td>
     </tr>
     <tr>
-      <th></th>
       <td>2022</td>
       <td>0.028190</td>
       <td>-0.008445</td>
@@ -654,7 +675,6 @@
       <td>107</td>
     </tr>
     <tr>
-      <th></th>
       <td>2023</td>
       <td>0.126359</td>
       <td>0.062399</td>
@@ -663,7 +683,6 @@
       <td>103</td>
     </tr>
     <tr>
-      <th></th>
       <td>2024</td>
       <td>-0.030720</td>
       <td>0.046558</td>
@@ -672,7 +691,6 @@
       <td>102</td>
     </tr>
     <tr>
-      <th></th>
       <td>2025</td>
       <td>0.032213</td>
       <td>0.030712</td>
@@ -691,7 +709,6 @@
                     <table class="dataframe display nowrap compact">
   <thead>
     <tr style="text-align: center;">
-      <th>grupo</th>
       <th>ano</th>
       <th>janela</th>
       <th>large</th>
@@ -703,7 +720,6 @@
   </thead>
   <tbody>
     <tr>
-      <th></th>
       <td>2011</td>
       <td>dez_jan</td>
       <td>-0.032215</td>
@@ -713,7 +729,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2012</td>
       <td>dez_jan</td>
       <td>0.073720</td>
@@ -723,7 +738,6 @@
       <td>81</td>
     </tr>
     <tr>
-      <th></th>
       <td>2013</td>
       <td>dez_jan</td>
       <td>0.027527</td>
@@ -733,7 +747,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2014</td>
       <td>dez_jan</td>
       <td>-0.056566</td>
@@ -743,7 +756,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2015</td>
       <td>dez_jan</td>
       <td>-0.044850</td>
@@ -753,7 +765,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2016</td>
       <td>dez_jan</td>
       <td>-0.088068</td>
@@ -763,7 +774,6 @@
       <td>69</td>
     </tr>
     <tr>
-      <th></th>
       <td>2017</td>
       <td>dez_jan</td>
       <td>0.131164</td>
@@ -773,7 +783,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2018</td>
       <td>dez_jan</td>
       <td>0.128258</td>
@@ -783,7 +792,6 @@
       <td>82</td>
     </tr>
     <tr>
-      <th></th>
       <td>2019</td>
       <td>dez_jan</td>
       <td>0.151821</td>
@@ -793,7 +801,6 @@
       <td>88</td>
     </tr>
     <tr>
-      <th></th>
       <td>2020</td>
       <td>dez_jan</td>
       <td>0.050129</td>
@@ -803,7 +810,6 @@
       <td>94</td>
     </tr>
     <tr>
-      <th></th>
       <td>2021</td>
       <td>dez_jan</td>
       <td>-0.014682</td>
@@ -813,7 +819,6 @@
       <td>106</td>
     </tr>
     <tr>
-      <th></th>
       <td>2022</td>
       <td>dez_jan</td>
       <td>0.014029</td>
@@ -823,7 +828,6 @@
       <td>112</td>
     </tr>
     <tr>
-      <th></th>
       <td>2023</td>
       <td>dez_jan</td>
       <td>0.114245</td>
@@ -833,7 +837,6 @@
       <td>105</td>
     </tr>
     <tr>
-      <th></th>
       <td>2024</td>
       <td>dez_jan</td>
       <td>-0.036850</td>
@@ -843,7 +846,6 @@
       <td>105</td>
     </tr>
     <tr>
-      <th></th>
       <td>2025</td>
       <td>dez_jan</td>
       <td>0.025086</td>
@@ -853,7 +855,6 @@
       <td>99</td>
     </tr>
     <tr>
-      <th></th>
       <td>2011</td>
       <td>mar_abr</td>
       <td>0.021807</td>
@@ -863,7 +864,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2012</td>
       <td>mar_abr</td>
       <td>-0.034123</td>
@@ -873,7 +873,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2013</td>
       <td>mar_abr</td>
       <td>-0.018844</td>
@@ -883,7 +882,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2014</td>
       <td>mar_abr</td>
       <td>0.122865</td>
@@ -893,7 +891,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2015</td>
       <td>mar_abr</td>
       <td>0.134411</td>
@@ -903,7 +900,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2016</td>
       <td>mar_abr</td>
       <td>0.168364</td>
@@ -913,7 +909,6 @@
       <td>69</td>
     </tr>
     <tr>
-      <th></th>
       <td>2017</td>
       <td>mar_abr</td>
       <td>-0.000895</td>
@@ -923,7 +918,6 @@
       <td>73</td>
     </tr>
     <tr>
-      <th></th>
       <td>2018</td>
       <td>mar_abr</td>
       <td>0.008508</td>
@@ -933,7 +927,6 @@
       <td>79</td>
     </tr>
     <tr>
-      <th></th>
       <td>2019</td>
       <td>mar_abr</td>
       <td>-0.019366</td>
@@ -943,7 +936,6 @@
       <td>87</td>
     </tr>
     <tr>
-      <th></th>
       <td>2020</td>
       <td>mar_abr</td>
       <td>0.128468</td>
@@ -953,7 +945,6 @@
       <td>90</td>
     </tr>
     <tr>
-      <th></th>
       <td>2021</td>
       <td>mar_abr</td>
       <td>0.071758</td>
@@ -963,7 +954,6 @@
       <td>103</td>
     </tr>
     <tr>
-      <th></th>
       <td>2022</td>
       <td>mar_abr</td>
       <td>0.027183</td>
@@ -973,7 +963,6 @@
       <td>108</td>
     </tr>
     <tr>
-      <th></th>
       <td>2023</td>
       <td>mar_abr</td>
       <td>0.001180</td>
@@ -983,7 +972,6 @@
       <td>104</td>
     </tr>
     <tr>
-      <th></th>
       <td>2024</td>
       <td>mar_abr</td>
       <td>-0.045867</td>
@@ -993,7 +981,6 @@
       <td>101</td>
     </tr>
     <tr>
-      <th></th>
       <td>2025</td>
       <td>mar_abr</td>
       <td>0.084460</td>
@@ -1003,7 +990,6 @@
       <td>98</td>
     </tr>
     <tr>
-      <th></th>
       <td>2011</td>
       <td>abr_mai</td>
       <td>0.003879</td>
@@ -1013,7 +999,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2012</td>
       <td>abr_mai</td>
       <td>-0.088687</td>
@@ -1023,7 +1008,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2013</td>
       <td>abr_mai</td>
       <td>0.020607</td>
@@ -1033,7 +1017,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2014</td>
       <td>abr_mai</td>
       <td>0.023731</td>
@@ -1043,7 +1026,6 @@
       <td>76</td>
     </tr>
     <tr>
-      <th></th>
       <td>2015</td>
       <td>abr_mai</td>
       <td>-0.028632</td>
@@ -1053,7 +1035,6 @@
       <td>74</td>
     </tr>
     <tr>
-      <th></th>
       <td>2016</td>
       <td>abr_mai</td>
       <td>-0.069053</td>
@@ -1063,7 +1044,6 @@
       <td>73</td>
     </tr>
     <tr>
-      <th></th>
       <td>2017</td>
       <td>abr_mai</td>
       <td>-0.001934</td>
@@ -1073,7 +1053,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2018</td>
       <td>abr_mai</td>
       <td>-0.068936</td>
@@ -1083,7 +1062,6 @@
       <td>81</td>
     </tr>
     <tr>
-      <th></th>
       <td>2019</td>
       <td>abr_mai</td>
       <td>0.050750</td>
@@ -1093,7 +1071,6 @@
       <td>85</td>
     </tr>
     <tr>
-      <th></th>
       <td>2020</td>
       <td>abr_mai</td>
       <td>0.113519</td>
@@ -1103,7 +1080,6 @@
       <td>93</td>
     </tr>
     <tr>
-      <th></th>
       <td>2021</td>
       <td>abr_mai</td>
       <td>0.056561</td>
@@ -1113,7 +1089,6 @@
       <td>104</td>
     </tr>
     <tr>
-      <th></th>
       <td>2022</td>
       <td>abr_mai</td>
       <td>-0.059269</td>
@@ -1123,7 +1098,6 @@
       <td>111</td>
     </tr>
     <tr>
-      <th></th>
       <td>2023</td>
       <td>abr_mai</td>
       <td>0.101239</td>
@@ -1133,7 +1107,6 @@
       <td>105</td>
     </tr>
     <tr>
-      <th></th>
       <td>2024</td>
       <td>abr_mai</td>
       <td>-0.039658</td>
@@ -1143,7 +1116,6 @@
       <td>101</td>
     </tr>
     <tr>
-      <th></th>
       <td>2025</td>
       <td>abr_mai</td>
       <td>0.092966</td>
@@ -1153,7 +1125,6 @@
       <td>100</td>
     </tr>
     <tr>
-      <th></th>
       <td>2011</td>
       <td>jul_ago</td>
       <td>-0.025317</td>
@@ -1163,7 +1134,6 @@
       <td>74</td>
     </tr>
     <tr>
-      <th></th>
       <td>2012</td>
       <td>jul_ago</td>
       <td>0.094227</td>
@@ -1173,7 +1143,6 @@
       <td>72</td>
     </tr>
     <tr>
-      <th></th>
       <td>2013</td>
       <td>jul_ago</td>
       <td>0.040061</td>
@@ -1183,7 +1152,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2014</td>
       <td>jul_ago</td>
       <td>0.054349</td>
@@ -1193,7 +1161,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2015</td>
       <td>jul_ago</td>
       <td>-0.153462</td>
@@ -1203,7 +1170,6 @@
       <td>71</td>
     </tr>
     <tr>
-      <th></th>
       <td>2016</td>
       <td>jul_ago</td>
       <td>0.061121</td>
@@ -1213,7 +1179,6 @@
       <td>71</td>
     </tr>
     <tr>
-      <th></th>
       <td>2017</td>
       <td>jul_ago</td>
       <td>0.077830</td>
@@ -1223,7 +1188,6 @@
       <td>75</td>
     </tr>
     <tr>
-      <th></th>
       <td>2018</td>
       <td>jul_ago</td>
       <td>-0.010885</td>
@@ -1233,7 +1197,6 @@
       <td>81</td>
     </tr>
     <tr>
-      <th></th>
       <td>2019</td>
       <td>jul_ago</td>
       <td>0.014241</td>
@@ -1243,7 +1206,6 @@
       <td>87</td>
     </tr>
     <tr>
-      <th></th>
       <td>2020</td>
       <td>jul_ago</td>
       <td>0.002745</td>
@@ -1253,7 +1215,6 @@
       <td>96</td>
     </tr>
     <tr>
-      <th></th>
       <td>2021</td>
       <td>jul_ago</td>
       <td>-0.083161</td>
@@ -1263,7 +1224,6 @@
       <td>99</td>
     </tr>
     <tr>
-      <th></th>
       <td>2022</td>
       <td>jul_ago</td>
       <td>0.148867</td>
@@ -1273,7 +1233,6 @@
       <td>110</td>
     </tr>
     <tr>
-      <th></th>
       <td>2023</td>
       <td>jul_ago</td>
       <td>-0.054423</td>
@@ -1283,7 +1242,6 @@
       <td>103</td>
     </tr>
     <tr>
-      <th></th>
       <td>2024</td>
       <td>jul_ago</td>
       <td>0.023079</td>
@@ -1293,7 +1251,6 @@
       <td>102</td>
     </tr>
     <tr>
-      <th></th>
       <td>2025</td>
       <td>jul_ago</td>
       <td>0.044192</td>
@@ -1303,7 +1260,6 @@
       <td>97</td>
     </tr>
     <tr>
-      <th></th>
       <td>2011</td>
       <td>ago_set</td>
       <td>-0.011191</td>
@@ -1313,7 +1269,6 @@
       <td>73</td>
     </tr>
     <tr>
-      <th></th>
       <td>2012</td>
       <td>ago_set</td>
       <td>0.036382</td>
@@ -1323,7 +1278,6 @@
       <td>72</td>
     </tr>
     <tr>
-      <th></th>
       <td>2013</td>
       <td>ago_set</td>
       <td>0.043470</td>
@@ -1333,7 +1287,6 @@
       <td>78</td>
     </tr>
     <tr>
-      <th></th>
       <td>2014</td>
       <td>ago_set</td>
       <td>-0.045274</td>
@@ -1343,7 +1296,6 @@
       <td>77</td>
     </tr>
     <tr>
-      <th></th>
       <td>2015</td>
       <td>ago_set</td>
       <td>-0.070499</td>
@@ -1353,7 +1305,6 @@
       <td>70</td>
     </tr>
     <tr>
-      <th></th>
       <td>2016</td>
       <td>ago_set</td>
       <td>-0.007467</td>
@@ -1363,7 +1314,6 @@
       <td>71</td>
     </tr>
     <tr>
-      <th></th>
       <td>2017</td>
       <td>ago_set</td>
       <td>0.081382</td>
@@ -1373,7 +1323,6 @@
       <td>78</td>
     </tr>
     <tr>
-      <th></th>
       <td>2018</td>
       <td>ago_set</td>
       <td>-0.008122</td>
@@ -1383,7 +1332,6 @@
       <td>78</td>
     </tr>
     <tr>
-      <th></th>
       <td>2019</td>
       <td>ago_set</td>
       <td>0.048918</td>
@@ -1393,7 +1341,6 @@
       <td>89</td>
     </tr>
     <tr>
-      <th></th>
       <td>2020</td>
       <td>ago_set</td>
       <td>-0.029533</td>
@@ -1403,7 +1350,6 @@
       <td>95</td>
     </tr>
     <tr>
-      <th></th>
       <td>2021</td>
       <td>ago_set</td>
       <td>-0.042564</td>
@@ -1413,7 +1359,6 @@
       <td>96</td>
     </tr>
     <tr>
-      <th></th>
       <td>2022</td>
       <td>ago_set</td>
       <td>-0.062860</td>
@@ -1423,7 +1368,6 @@
       <td>107</td>
     </tr>
     <tr>
-      <th></th>
       <td>2023</td>
       <td>ago_set</td>
       <td>-0.065434</td>
@@ -1433,7 +1377,6 @@
       <td>106</td>
     </tr>
     <tr>
-      <th></th>
       <td>2024</td>
       <td>ago_set</td>
       <td>-0.028337</td>
@@ -1443,7 +1386,6 @@
       <td>102</td>
     </tr>
     <tr>
-      <th></th>
       <td>2025</td>
       <td>ago_set</td>
       <td>0.085491</td>
@@ -1523,6 +1465,10 @@
                 </div>
             </div>
             
+<div class="subsection-block">
+    <h3>Estatísticas e Hipótese Central</h3>
+</div>
+
             <div class="table-block">
                 <h3>Resumo Estatístico dos Spreads</h3>
                 <div class="table-wrapper">
@@ -1536,33 +1482,14 @@
       <th>min_spread</th>
       <th>max_spread</th>
       <th>pct_spread_positivo</th>
-      <th>pct_small_maior_large</th>
       <th>n_anos</th>
+      <th>retorno_small_medio</th>
+      <th>retorno_large_medio</th>
+      <th>n_small_medio</th>
+      <th>n_large_medio</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>abr_mai</td>
-      <td>0.021373</td>
-      <td>0.015050</td>
-      <td>0.055759</td>
-      <td>-0.103075</td>
-      <td>0.128642</td>
-      <td>0.733333</td>
-      <td>0.733333</td>
-      <td>15.000000</td>
-    </tr>
-    <tr>
-      <td>ago_set</td>
-      <td>0.010870</td>
-      <td>0.019409</td>
-      <td>0.043746</td>
-      <td>-0.060223</td>
-      <td>0.096486</td>
-      <td>0.666667</td>
-      <td>0.666667</td>
-      <td>15.000000</td>
-    </tr>
     <tr>
       <td>dez_jan</td>
       <td>0.034998</td>
@@ -1571,19 +1498,11 @@
       <td>-0.042658</td>
       <td>0.193602</td>
       <td>0.666667</td>
-      <td>0.666667</td>
       <td>15.000000</td>
-    </tr>
-    <tr>
-      <td>jul_ago</td>
-      <td>0.015147</td>
-      <td>0.022729</td>
-      <td>0.053324</td>
-      <td>-0.075442</td>
-      <td>0.123521</td>
-      <td>0.600000</td>
-      <td>0.600000</td>
-      <td>15.000000</td>
+      <td>0.064514</td>
+      <td>0.029516</td>
+      <td>88.066667</td>
+      <td>88.066667</td>
     </tr>
     <tr>
       <td>mar_abr</td>
@@ -1593,7 +1512,712 @@
       <td>-0.107831</td>
       <td>0.113845</td>
       <td>0.400000</td>
+      <td>15.000000</td>
+      <td>0.041189</td>
+      <td>0.043327</td>
+      <td>86.066667</td>
+      <td>86.066667</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>0.021373</td>
+      <td>0.015050</td>
+      <td>0.055759</td>
+      <td>-0.103075</td>
+      <td>0.128642</td>
+      <td>0.733333</td>
+      <td>15.000000</td>
+      <td>0.028512</td>
+      <td>0.007139</td>
+      <td>87.066667</td>
+      <td>87.066667</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>0.015147</td>
+      <td>0.022729</td>
+      <td>0.053324</td>
+      <td>-0.075442</td>
+      <td>0.123521</td>
+      <td>0.600000</td>
+      <td>15.000000</td>
+      <td>0.030711</td>
+      <td>0.015564</td>
+      <td>86.000000</td>
+      <td>86.000000</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>0.010870</td>
+      <td>0.019409</td>
+      <td>0.043746</td>
+      <td>-0.060223</td>
+      <td>0.096486</td>
+      <td>0.666667</td>
+      <td>15.000000</td>
+      <td>0.005828</td>
+      <td>-0.005043</td>
+      <td>85.933333</td>
+      <td>85.933333</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+            
+            <div class="table-block">
+                <h3>Testes Contra Zero por Janela</h3>
+                <div class="table-wrapper">
+                    <table class="dataframe display nowrap compact">
+  <thead>
+    <tr style="text-align: center;">
+      <th>janela</th>
+      <th>familia_teste</th>
+      <th>teste</th>
+      <th>hipotese_alternativa</th>
+      <th>estatistica</th>
+      <th>p_valor</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dez_jan</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>1.952586</td>
+      <td>0.035579</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>1.290994</td>
+      <td>0.098353</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.034998</td>
+      <td>0.036296</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>-0.125564</td>
+      <td>0.549069</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>-0.774597</td>
+      <td>0.780711</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>-0.002138</td>
+      <td>0.545545</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>1.484572</td>
+      <td>0.079911</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>1.807392</td>
+      <td>0.035351</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.021373</td>
+      <td>0.082892</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>1.100139</td>
+      <td>0.144914</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>0.774597</td>
+      <td>0.219289</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.015147</td>
+      <td>0.144286</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.962376</td>
+      <td>0.176095</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>1.290994</td>
+      <td>0.098353</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.010870</td>
+      <td>0.180982</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+            
+            <div class="table-block">
+                <h3>Comparações Pareadas: Dezembro→Janeiro vs Controles</h3>
+                <div class="table-wrapper">
+                    <table class="dataframe display nowrap compact">
+  <thead>
+    <tr style="text-align: center;">
+      <th>janela_referencia</th>
+      <th>janela_controle</th>
+      <th>comparacao</th>
+      <th>n_pares</th>
+      <th>media_spread_dez_jan</th>
+      <th>media_spread_controle</th>
+      <th>media_diff_spread</th>
+      <th>mediana_diff_spread</th>
+      <th>pct_diff_positiva</th>
+      <th>wilcoxon_stat</th>
+      <th>wilcoxon_p_valor</th>
+      <th>permutacao_stat</th>
+      <th>permutacao_p_valor</th>
+      <th>wilcoxon_p_holm</th>
+      <th>permutacao_p_holm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dez_jan</td>
+      <td>mar_abr</td>
+      <td>dez_jan &gt; mar_abr</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>-0.002138</td>
+      <td>0.037136</td>
+      <td>0.026824</td>
+      <td>0.733333</td>
+      <td>90.000000</td>
+      <td>0.047302</td>
+      <td>0.037136</td>
+      <td>0.079196</td>
+      <td>0.189209</td>
+      <td>0.316784</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>abr_mai</td>
+      <td>dez_jan &gt; abr_mai</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>0.021373</td>
+      <td>0.013625</td>
+      <td>0.007082</td>
+      <td>0.533333</td>
+      <td>61.000000</td>
+      <td>0.488983</td>
+      <td>0.013625</td>
+      <td>0.346983</td>
+      <td>0.678772</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>jul_ago</td>
+      <td>dez_jan &gt; jul_ago</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>0.015147</td>
+      <td>0.019851</td>
+      <td>0.036927</td>
+      <td>0.666667</td>
+      <td>68.000000</td>
+      <td>0.339386</td>
+      <td>0.019851</td>
+      <td>0.207190</td>
+      <td>0.678772</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>ago_set</td>
+      <td>dez_jan &gt; ago_set</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>0.010870</td>
+      <td>0.024128</td>
+      <td>0.038538</td>
+      <td>0.600000</td>
+      <td>76.000000</td>
+      <td>0.194702</td>
+      <td>0.024128</td>
+      <td>0.138493</td>
+      <td>0.584106</td>
+      <td>0.415479</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+            
+    <div class="table-block">
+        <h3>Resumo da Hipótese Central</h3>
+        <div class="table-wrapper">
+            <table class="dataframe display nowrap compact">
+  <thead>
+    <tr style="text-align: center;">
+      <th>comparacao</th>
+      <th>n_pares</th>
+      <th>media_spread_dez_jan</th>
+      <th>media_spread_controle</th>
+      <th>media_diff_spread</th>
+      <th>mediana_diff_spread</th>
+      <th>pct_diff_positiva</th>
+      <th>wilcoxon_p_valor</th>
+      <th>wilcoxon_p_holm</th>
+      <th>permutacao_p_valor</th>
+      <th>permutacao_p_holm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dez_jan &gt; mar_abr</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>-0.002138</td>
+      <td>0.037136</td>
+      <td>0.026824</td>
+      <td>0.733333</td>
+      <td>0.047302</td>
+      <td>0.189209</td>
+      <td>0.079196</td>
+      <td>0.316784</td>
+    </tr>
+    <tr>
+      <td>dez_jan &gt; abr_mai</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>0.021373</td>
+      <td>0.013625</td>
+      <td>0.007082</td>
+      <td>0.533333</td>
+      <td>0.488983</td>
+      <td>0.678772</td>
+      <td>0.346983</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <td>dez_jan &gt; jul_ago</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>0.015147</td>
+      <td>0.019851</td>
+      <td>0.036927</td>
+      <td>0.666667</td>
+      <td>0.339386</td>
+      <td>0.678772</td>
+      <td>0.207190</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <td>dez_jan &gt; ago_set</td>
+      <td>15</td>
+      <td>0.034998</td>
+      <td>0.010870</td>
+      <td>0.024128</td>
+      <td>0.038538</td>
+      <td>0.600000</td>
+      <td>0.194702</td>
+      <td>0.584106</td>
+      <td>0.138493</td>
+      <td>0.415479</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+    </div>
+    
+            <div class="table-block">
+                <h3>Tabela Consolidada dos Testes</h3>
+                <div class="table-wrapper">
+                    <table class="dataframe display nowrap compact">
+  <thead>
+    <tr style="text-align: center;">
+      <th>janela</th>
+      <th>familia_teste</th>
+      <th>teste</th>
+      <th>hipotese_alternativa</th>
+      <th>estatistica</th>
+      <th>p_valor</th>
+      <th>n</th>
+      <th>janela_controle</th>
+      <th>p_valor_holm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dez_jan</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>1.952586</td>
+      <td>0.035579</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>1.290994</td>
+      <td>0.098353</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.034998</td>
+      <td>0.036296</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>-0.125564</td>
+      <td>0.549069</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>-0.774597</td>
+      <td>0.780711</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>-0.002138</td>
+      <td>0.545545</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>1.484572</td>
+      <td>0.079911</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>1.807392</td>
+      <td>0.035351</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.021373</td>
+      <td>0.082892</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>1.100139</td>
+      <td>0.144914</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>0.774597</td>
+      <td>0.219289</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.015147</td>
+      <td>0.144286</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>contra_zero</td>
+      <td>t-test unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.962376</td>
+      <td>0.176095</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>contra_zero</td>
+      <td>teste de proporção unilateral</td>
+      <td>P(spread &gt; 0) &gt; 50%</td>
+      <td>1.290994</td>
+      <td>0.098353</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>contra_zero</td>
+      <td>permutação unilateral</td>
+      <td>spread &gt; 0</td>
+      <td>0.010870</td>
+      <td>0.180982</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Wilcoxon pareado unilateral</td>
+      <td>spread(dez_jan) &gt; spread(mar_abr)</td>
+      <td>90.000000</td>
+      <td>0.047302</td>
+      <td>15</td>
+      <td>mar_abr</td>
+      <td>0.189209</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Permutação pareada unilateral</td>
+      <td>spread(dez_jan) &gt; spread(mar_abr)</td>
+      <td>0.037136</td>
+      <td>0.079196</td>
+      <td>15</td>
+      <td>mar_abr</td>
+      <td>0.316784</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Wilcoxon pareado unilateral</td>
+      <td>spread(dez_jan) &gt; spread(abr_mai)</td>
+      <td>61.000000</td>
+      <td>0.488983</td>
+      <td>15</td>
+      <td>abr_mai</td>
+      <td>0.678772</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Permutação pareada unilateral</td>
+      <td>spread(dez_jan) &gt; spread(abr_mai)</td>
+      <td>0.013625</td>
+      <td>0.346983</td>
+      <td>15</td>
+      <td>abr_mai</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Wilcoxon pareado unilateral</td>
+      <td>spread(dez_jan) &gt; spread(jul_ago)</td>
+      <td>68.000000</td>
+      <td>0.339386</td>
+      <td>15</td>
+      <td>jul_ago</td>
+      <td>0.678772</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Permutação pareada unilateral</td>
+      <td>spread(dez_jan) &gt; spread(jul_ago)</td>
+      <td>0.019851</td>
+      <td>0.207190</td>
+      <td>15</td>
+      <td>jul_ago</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Wilcoxon pareado unilateral</td>
+      <td>spread(dez_jan) &gt; spread(ago_set)</td>
+      <td>76.000000</td>
+      <td>0.194702</td>
+      <td>15</td>
+      <td>ago_set</td>
+      <td>0.584106</td>
+    </tr>
+    <tr>
+      <td>dez_jan</td>
+      <td>hipotese_central_pareada</td>
+      <td>Permutação pareada unilateral</td>
+      <td>spread(dez_jan) &gt; spread(ago_set)</td>
+      <td>0.024128</td>
+      <td>0.138493</td>
+      <td>15</td>
+      <td>ago_set</td>
+      <td>0.415479</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+            
+            <div class="table-block">
+                <h3>Spread Médio por Janela</h3>
+                <div class="table-wrapper">
+                    <table class="dataframe display nowrap compact">
+  <thead>
+    <tr style="text-align: center;">
+      <th>janela</th>
+      <th>media_spread</th>
+      <th>mediana_spread</th>
+      <th>pct_spread_positivo</th>
+      <th>n_anos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dez_jan</td>
+      <td>0.034998</td>
+      <td>0.012832</td>
+      <td>0.666667</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <td>mar_abr</td>
+      <td>-0.002138</td>
+      <td>-0.010619</td>
       <td>0.400000</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <td>abr_mai</td>
+      <td>0.021373</td>
+      <td>0.015050</td>
+      <td>0.733333</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <td>jul_ago</td>
+      <td>0.015147</td>
+      <td>0.022729</td>
+      <td>0.600000</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <td>ago_set</td>
+      <td>0.010870</td>
+      <td>0.019409</td>
+      <td>0.666667</td>
       <td>15.000000</td>
     </tr>
   </tbody>
@@ -1602,77 +2226,578 @@
             </div>
             
             <div class="table-block">
-                <h3>Testes Estatísticos</h3>
+                <h3>Spread por Ano e Janela</h3>
                 <div class="table-wrapper">
                     <table class="dataframe display nowrap compact">
   <thead>
     <tr style="text-align: center;">
-      <th>janela</th>
-      <th>teste</th>
-      <th>estatistica</th>
-      <th>p_valor</th>
+      <th>ano</th>
+      <th>dez_jan</th>
+      <th>mar_abr</th>
+      <th>abr_mai</th>
+      <th>jul_ago</th>
+      <th>ago_set</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>dez_jan</td>
-      <td>t-test (spread &gt; 0)</td>
-      <td>1.952586</td>
-      <td>0.035579</td>
+      <td>2011</td>
+      <td>0.003357</td>
+      <td>0.113845</td>
+      <td>0.023634</td>
+      <td>-0.049218</td>
+      <td>-0.047993</td>
     </tr>
     <tr>
+      <td>2012</td>
+      <td>0.012832</td>
+      <td>-0.013993</td>
+      <td>0.000750</td>
+      <td>-0.038776</td>
+      <td>-0.014327</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>-0.011440</td>
+      <td>-0.010619</td>
+      <td>0.058073</td>
+      <td>0.081606</td>
+      <td>0.096486</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.057947</td>
+      <td>-0.073891</td>
+      <td>0.015050</td>
+      <td>0.022729</td>
+      <td>0.019409</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.025849</td>
+      <td>-0.042331</td>
+      <td>0.055802</td>
+      <td>0.010110</td>
+      <td>0.036252</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>0.048637</td>
+      <td>0.016852</td>
+      <td>0.077990</td>
+      <td>0.123521</td>
+      <td>-0.026889</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>0.089967</td>
+      <td>0.012653</td>
+      <td>0.054145</td>
+      <td>0.023828</td>
+      <td>-0.060223</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>-0.042006</td>
+      <td>-0.044763</td>
+      <td>-0.008750</td>
+      <td>0.027444</td>
+      <td>0.000718</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>-0.042658</td>
+      <td>-0.035241</td>
+      <td>-0.049740</td>
+      <td>0.067086</td>
+      <td>0.041193</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>0.193602</td>
+      <td>-0.107831</td>
+      <td>-0.103075</td>
+      <td>-0.020212</td>
+      <td>0.047342</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>0.140109</td>
+      <td>0.110704</td>
+      <td>0.128642</td>
+      <td>0.037395</td>
+      <td>0.008923</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>-0.008044</td>
+      <td>-0.009688</td>
+      <td>0.012442</td>
+      <td>-0.075442</td>
+      <td>0.054692</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>-0.042058</td>
+      <td>0.057537</td>
+      <td>0.060437</td>
+      <td>0.050518</td>
+      <td>0.032358</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>0.092023</td>
+      <td>0.066099</td>
+      <td>0.014170</td>
+      <td>-0.003307</td>
+      <td>0.021750</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>0.006849</td>
+      <td>-0.071406</td>
+      <td>-0.018974</td>
+      <td>-0.030078</td>
+      <td>-0.046642</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+            
+            <div class="table-block">
+                <h3>Diferenças Pareadas por Ano</h3>
+                <div class="table-wrapper">
+                    <table class="dataframe display nowrap compact">
+  <thead>
+    <tr style="text-align: center;">
+      <th>ano</th>
+      <th>spread_dez_jan</th>
+      <th>spread_controle</th>
+      <th>janela_controle</th>
+      <th>diff_spread</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2011</td>
+      <td>0.003357</td>
+      <td>0.113845</td>
       <td>mar_abr</td>
-      <td>t-test (spread &gt; 0)</td>
-      <td>-0.125564</td>
-      <td>1.000000</td>
+      <td>-0.110488</td>
     </tr>
     <tr>
-      <td>abr_mai</td>
-      <td>t-test (spread &gt; 0)</td>
-      <td>1.484572</td>
-      <td>0.079911</td>
-    </tr>
-    <tr>
-      <td>jul_ago</td>
-      <td>t-test (spread &gt; 0)</td>
-      <td>1.100139</td>
-      <td>0.144914</td>
-    </tr>
-    <tr>
-      <td>ago_set</td>
-      <td>t-test (spread &gt; 0)</td>
-      <td>0.962376</td>
-      <td>0.176095</td>
-    </tr>
-    <tr>
-      <td>dez_jan</td>
-      <td>permutação</td>
-      <td>0.034998</td>
-      <td>0.031800</td>
-    </tr>
-    <tr>
+      <td>2012</td>
+      <td>0.012832</td>
+      <td>-0.013993</td>
       <td>mar_abr</td>
-      <td>permutação</td>
-      <td>-0.002138</td>
-      <td>0.543400</td>
+      <td>0.026824</td>
     </tr>
     <tr>
+      <td>2013</td>
+      <td>-0.011440</td>
+      <td>-0.010619</td>
+      <td>mar_abr</td>
+      <td>-0.000821</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.057947</td>
+      <td>-0.073891</td>
+      <td>mar_abr</td>
+      <td>0.131838</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.025849</td>
+      <td>-0.042331</td>
+      <td>mar_abr</td>
+      <td>0.068179</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>0.048637</td>
+      <td>0.016852</td>
+      <td>mar_abr</td>
+      <td>0.031785</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>0.089967</td>
+      <td>0.012653</td>
+      <td>mar_abr</td>
+      <td>0.077314</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>-0.042006</td>
+      <td>-0.044763</td>
+      <td>mar_abr</td>
+      <td>0.002757</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>-0.042658</td>
+      <td>-0.035241</td>
+      <td>mar_abr</td>
+      <td>-0.007417</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>0.193602</td>
+      <td>-0.107831</td>
+      <td>mar_abr</td>
+      <td>0.301433</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>0.140109</td>
+      <td>0.110704</td>
+      <td>mar_abr</td>
+      <td>0.029405</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>-0.008044</td>
+      <td>-0.009688</td>
+      <td>mar_abr</td>
+      <td>0.001644</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>-0.042058</td>
+      <td>0.057537</td>
+      <td>mar_abr</td>
+      <td>-0.099595</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>0.092023</td>
+      <td>0.066099</td>
+      <td>mar_abr</td>
+      <td>0.025924</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>0.006849</td>
+      <td>-0.071406</td>
+      <td>mar_abr</td>
+      <td>0.078256</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>0.003357</td>
+      <td>0.023634</td>
       <td>abr_mai</td>
-      <td>permutação</td>
-      <td>0.021373</td>
-      <td>0.083800</td>
+      <td>-0.020276</td>
     </tr>
     <tr>
+      <td>2012</td>
+      <td>0.012832</td>
+      <td>0.000750</td>
+      <td>abr_mai</td>
+      <td>0.012081</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>-0.011440</td>
+      <td>0.058073</td>
+      <td>abr_mai</td>
+      <td>-0.069513</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.057947</td>
+      <td>0.015050</td>
+      <td>abr_mai</td>
+      <td>0.042897</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.025849</td>
+      <td>0.055802</td>
+      <td>abr_mai</td>
+      <td>-0.029953</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>0.048637</td>
+      <td>0.077990</td>
+      <td>abr_mai</td>
+      <td>-0.029353</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>0.089967</td>
+      <td>0.054145</td>
+      <td>abr_mai</td>
+      <td>0.035821</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>-0.042006</td>
+      <td>-0.008750</td>
+      <td>abr_mai</td>
+      <td>-0.033256</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>-0.042658</td>
+      <td>-0.049740</td>
+      <td>abr_mai</td>
+      <td>0.007082</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>0.193602</td>
+      <td>-0.103075</td>
+      <td>abr_mai</td>
+      <td>0.296678</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>0.140109</td>
+      <td>0.128642</td>
+      <td>abr_mai</td>
+      <td>0.011466</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>-0.008044</td>
+      <td>0.012442</td>
+      <td>abr_mai</td>
+      <td>-0.020487</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>-0.042058</td>
+      <td>0.060437</td>
+      <td>abr_mai</td>
+      <td>-0.102495</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>0.092023</td>
+      <td>0.014170</td>
+      <td>abr_mai</td>
+      <td>0.077854</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>0.006849</td>
+      <td>-0.018974</td>
+      <td>abr_mai</td>
+      <td>0.025823</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>0.003357</td>
+      <td>-0.049218</td>
       <td>jul_ago</td>
-      <td>permutação</td>
-      <td>0.015147</td>
-      <td>0.145400</td>
+      <td>0.052575</td>
     </tr>
     <tr>
+      <td>2012</td>
+      <td>0.012832</td>
+      <td>-0.038776</td>
+      <td>jul_ago</td>
+      <td>0.051608</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>-0.011440</td>
+      <td>0.081606</td>
+      <td>jul_ago</td>
+      <td>-0.093047</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.057947</td>
+      <td>0.022729</td>
+      <td>jul_ago</td>
+      <td>0.035218</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.025849</td>
+      <td>0.010110</td>
+      <td>jul_ago</td>
+      <td>0.015739</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>0.048637</td>
+      <td>0.123521</td>
+      <td>jul_ago</td>
+      <td>-0.074884</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>0.089967</td>
+      <td>0.023828</td>
+      <td>jul_ago</td>
+      <td>0.066139</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>-0.042006</td>
+      <td>0.027444</td>
+      <td>jul_ago</td>
+      <td>-0.069450</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>-0.042658</td>
+      <td>0.067086</td>
+      <td>jul_ago</td>
+      <td>-0.109744</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>0.193602</td>
+      <td>-0.020212</td>
+      <td>jul_ago</td>
+      <td>0.213815</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>0.140109</td>
+      <td>0.037395</td>
+      <td>jul_ago</td>
+      <td>0.102714</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>-0.008044</td>
+      <td>-0.075442</td>
+      <td>jul_ago</td>
+      <td>0.067397</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>-0.042058</td>
+      <td>0.050518</td>
+      <td>jul_ago</td>
+      <td>-0.092576</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>0.092023</td>
+      <td>-0.003307</td>
+      <td>jul_ago</td>
+      <td>0.095330</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>0.006849</td>
+      <td>-0.030078</td>
+      <td>jul_ago</td>
+      <td>0.036927</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>0.003357</td>
+      <td>-0.047993</td>
       <td>ago_set</td>
-      <td>permutação</td>
-      <td>0.010870</td>
-      <td>0.174600</td>
+      <td>0.051350</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td>0.012832</td>
+      <td>-0.014327</td>
+      <td>ago_set</td>
+      <td>0.027159</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>-0.011440</td>
+      <td>0.096486</td>
+      <td>ago_set</td>
+      <td>-0.107927</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.057947</td>
+      <td>0.019409</td>
+      <td>ago_set</td>
+      <td>0.038538</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.025849</td>
+      <td>0.036252</td>
+      <td>ago_set</td>
+      <td>-0.010404</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>0.048637</td>
+      <td>-0.026889</td>
+      <td>ago_set</td>
+      <td>0.075526</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>0.089967</td>
+      <td>-0.060223</td>
+      <td>ago_set</td>
+      <td>0.150190</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>-0.042006</td>
+      <td>0.000718</td>
+      <td>ago_set</td>
+      <td>-0.042724</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>-0.042658</td>
+      <td>0.041193</td>
+      <td>ago_set</td>
+      <td>-0.083851</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>0.193602</td>
+      <td>0.047342</td>
+      <td>ago_set</td>
+      <td>0.146261</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>0.140109</td>
+      <td>0.008923</td>
+      <td>ago_set</td>
+      <td>0.131186</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>-0.008044</td>
+      <td>0.054692</td>
+      <td>ago_set</td>
+      <td>-0.062737</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>-0.042058</td>
+      <td>0.032358</td>
+      <td>ago_set</td>
+      <td>-0.074416</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>0.092023</td>
+      <td>0.021750</td>
+      <td>ago_set</td>
+      <td>0.070273</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>0.006849</td>
+      <td>-0.046642</td>
+      <td>ago_set</td>
+      <td>0.053491</td>
     </tr>
   </tbody>
 </table>
@@ -1687,18 +2812,26 @@
             
     <section class="section">
         <h2>Gráficos</h2>
-        <p class='section-desc'>Visualizações principais do comportamento do spread small minus large.</p>
+        <p class='section-desc'>Comparação entre os grupos, comportamento dos spreads e evidência visual da hipótese central.</p>
+        
+    <div class="subsection-block">
+        <h3>Comparação Direta entre os Grupos</h3>
         <div class="grid-2">
     <div class="chart-card">
-        <h3>Retorno Médio por Janela: Small vs Large</h3>
+        <h3>Retorno Médio por Janela (Small vs Large)</h3>
         <img src="resultados/graficos/grafico_retorno_medio_janelas.png" alt="grafico_retorno_medio_janelas" class="zoomable-img">
     </div>
+    </div>
+    </div>
     
+    <div class="subsection-block">
+        <h3>Spreads e Distribuições</h3>
+        <div class="grid-2">
     <div class="chart-card">
         <h3>Distribuição do Spread por Janela</h3>
         <img src="resultados/graficos/boxplot_spread_janelas.png" alt="boxplot_spread_janelas" class="zoomable-img">
     </div>
-    </div><div class="grid-2">
+    
     <div class="chart-card">
         <h3>Evolução Temporal do Spread</h3>
         <img src="resultados/graficos/linha_spread_tempo.png" alt="linha_spread_tempo" class="zoomable-img">
@@ -1708,7 +2841,39 @@
         <h3>Distribuição do Spread em Dezembro→Janeiro</h3>
         <img src="resultados/graficos/hist_spread_janeiro.png" alt="hist_spread_janeiro" class="zoomable-img">
     </div>
+    
+    <div class="chart-card">
+        <h3>Spread Médio Small-Minus-Large por Janela</h3>
+        <img src="resultados/graficos/grafico_spread_medio_por_janela.png" alt="grafico_spread_medio_por_janela" class="zoomable-img">
     </div>
+    
+    <div class="chart-card">
+        <h3>Boxplot do Spread por Janela</h3>
+        <img src="resultados/graficos/grafico_boxplot_spread_por_janela.png" alt="grafico_boxplot_spread_por_janela" class="zoomable-img">
+    </div>
+    
+    <div class="chart-card">
+        <h3>Spread por Ano e Janela</h3>
+        <img src="resultados/graficos/grafico_spread_por_ano_e_janela.png" alt="grafico_spread_por_ano_e_janela" class="zoomable-img">
+    </div>
+    </div>
+    </div>
+    
+    <div class="subsection-block">
+        <h3>Hipótese Central: Dezembro→Janeiro vs Janelas de Controle</h3>
+        <div class="grid-2">
+    <div class="chart-card">
+        <h3>Comparação Pareada: Dezembro→Janeiro vs Controles</h3>
+        <img src="resultados/graficos/grafico_comparacao_pareada_dez_jan_vs_controles.png" alt="grafico_comparacao_pareada_dez_jan_vs_controles" class="zoomable-img">
+    </div>
+    
+    <div class="chart-card">
+        <h3>Distribuição das Diferenças Pareadas</h3>
+        <img src="resultados/graficos/grafico_boxplot_diferencas_pareadas.png" alt="grafico_boxplot_diferencas_pareadas" class="zoomable-img">
+    </div>
+    </div>
+    </div>
+    
     </section>
     
         </div>
@@ -1721,40 +2886,52 @@
         
 <div class="texto-livre">
     <p>
-        A análise indica que a janela de <b>dezembro→janeiro</b> apresenta o maior spread médio entre
-        ações de menor e maior liquidez dentre todas as janelas avaliadas, sugerindo a presença de um
-        possível efeito janeiro no mercado brasileiro.
+        O principal achado do projeto é que a janela <b>dezembro→janeiro</b> apresentou spread médio de <b>0.035</b>,
+        positivo em <b>66.7%</b> dos anos analisados.
+        Isso sugere que ações de menor liquidez tenderam, em média, a superar
+        ações de maior liquidez nessa virada de ano.
     </p>
 
     <p>
-        Do ponto de vista estatístico, o efeito apresentou significância próxima ao nível de 5%,
-        tanto no teste t quanto no teste de permutação, indicando que dificilmente o resultado ocorre
-        puramente ao acaso. No entanto, a evidência não é extremamente forte, estando próxima do limite
-        convencional de significância.
+        Nos testes <b>contra zero</b>, a janela principal ficou com
+        <b>p_t=0.0356</b> e
+        <b>p_perm=0.0363</b>,
+        o que reforça que o spread de dezembro→janeiro não foi apenas visualmente positivo,
+        mas também estatisticamente relevante nessa primeira camada de análise.
     </p>
 
     <p>
-        A análise temporal do spread revela um ponto importante: o ano de <b>2020</b> apresenta um valor
-        significativamente superior aos demais, funcionando como um outlier positivo na série. Esse valor
-        corresponde à janela entre <b>dezembro de 2019 e janeiro de 2020</b>, ou seja, anterior ao período
-        mais crítico da pandemia de COVID-19.
+        Na comparação direta entre dezembro→janeiro e as janelas de controle ano a ano,
+        a relação mais favorável apareceu contra <b>mar_abr</b>,
+        com diferença média de <b>0.037</b>.
+        Ainda assim, os valores ajustados por Holm ficaram em
+        <b>0.1892</b> no Wilcoxon e
+        <b>0.3168</b> na permutação pareada.
     </p>
 
     <p>
-        Portanto, o comportamento observado não está diretamente associado ao choque de mercado causado
-        pela pandemia, mas possivelmente a fatores como dinâmica de liquidez, fluxo de capital e
-        rebalanceamento de portfólio típicos do final e início do ano.
+        Isso sugere que <b>dezembro→janeiro parece economicamente mais forte</b>,
+        mas a superioridade estatística dessa janela sobre as demais
+        <b>não ficou robusta depois do teste pareado com ajuste por múltiplas comparações</b>.
     </p>
 
     <p>
-        Ainda assim, a presença desse valor elevado indica que parte da magnitude do efeito pode ser
-        influenciada por eventos específicos, e não exclusivamente por um padrão estrutural estável
-        ao longo do tempo.
+        A leitura temporal do spread também merece atenção. O ano de <b>2020</b> aparece como um dos pontos
+        mais fortes da série, elevando a média da janela principal. Como esse resultado corresponde à passagem
+        de <b>dezembro de 2019 para janeiro de 2020</b>, ele antecede o período mais agudo da pandemia e,
+        portanto, não deve ser interpretado como efeito direto do choque mais severo de COVID-19.
     </p>
 
     <p>
-        Mesmo considerando essa sensibilidade, o spread permanece majoritariamente positivo ao longo dos anos,
-        indicando a existência de um padrão econômico consistente, embora com variabilidade relevante.
+        Isso não invalida o resultado, mas mostra que parte da magnitude observada pode depender de episódios
+        específicos da amostra. Em outras palavras, o conjunto dos resultados aponta para um padrão plausível,
+        mas não para uma anomalia sazonal fortemente estável e incontestável.
+    </p>
+
+    <p>
+        Também é importante destacar que a narrativa correta não é “small caps medidas diretamente por market cap”.
+        O estudo utiliza <b>liquidez como proxy</b>, então a interpretação mais adequada é a de um possível
+        efeito janeiro entre ações de <b>menor liquidez</b> versus ações de <b>maior liquidez</b>.
     </p>
 </div>
 
@@ -1768,55 +2945,59 @@
     <h2>Conclusão</h2>
 
     <p>
-        Este projeto mostrou que ações de menor liquidez tendem a apresentar desempenho superior às de maior liquidez
-        na janela entre meados de dezembro e o final de janeiro no mercado brasileiro.
+        Este projeto mostrou que ações de <b>menor liquidez</b> tenderam a apresentar desempenho superior
+        às de <b>maior liquidez</b> na janela entre meados de dezembro e o final de janeiro no mercado brasileiro.
+        Em média, a janela principal apresentou spread de <b>0.035</b>,
+        com predominância de anos positivos.
     </p>
 
     <p>
-        A diferença observada foi economicamente relevante e consistente ao longo da amostra, com o maior spread médio
-        entre todas as janelas analisadas, o que está alinhado com a hipótese do efeito janeiro.
+        Quando a janela principal é comparada diretamente com as janelas de controle,
+        o resultado final fica mais equilibrado:
+        há <b>evidência econômica plausível</b> em favor do efeito janeiro,
+        e a janela principal passa nos testes contra zero,
+        mas a superioridade frente às janelas de controle
+        <b>não ficou robusta depois dos testes pareados com ajuste de Holm</b>.
     </p>
 
     <p>
-        No entanto, os testes estatísticos aplicados — incluindo teste t e teste de permutação — indicaram que essa
-        diferença apresenta significância estatística moderada, próxima ao nível de 5%. Ou seja, embora exista um sinal
-        consistente nos dados, a evidência não é suficientemente forte para afirmar com alta confiança que o efeito é
-        totalmente robusto e estável ao longo do tempo.
+        A leitura da série ao longo do tempo também sugere cautela.
+        O ano de <b>2020</b> aparece como um ponto de destaque e contribui para elevar a magnitude média
+        observada em dezembro→janeiro. Como esse movimento corresponde à janela entre
+        <b>dezembro de 2019 e janeiro de 2020</b>, ele antecede o período mais crítico da pandemia e
+        deve ser lido como parte da dinâmica específica da amostra, não como evidência de um único choque isolado.
     </p>
 
     <p>
-        A análise temporal do spread revela um ponto importante: o ano de <b>2020</b> apresenta um valor significativamente
-        superior aos demais, funcionando como um outlier positivo na série. Esse valor corresponde à janela entre
-        dezembro de 2019 e janeiro de 2020, ou seja, anterior ao período mais crítico da pandemia de COVID-19.
+        Portanto, a conclusão mais correta não é afirmar uma anomalia forte e definitiva,
+        mas sim reconhecer um padrão economicamente interessante, com suporte estatístico moderado
+        e sensível ao rigor do critério de comparação.
     </p>
 
     <p>
-        Isso indica que o comportamento observado não está diretamente associado ao choque de mercado causado pela
-        pandemia, mas possivelmente a dinâmicas de liquidez, fluxo de capital e rebalanceamento de portfólio típicas do
-        final e início do ano. Ainda assim, a presença desse valor elevado sugere que parte da magnitude do efeito pode
-        ser influenciada por eventos específicos, e não exclusivamente por um padrão estrutural estável.
-    </p>
-
-    <p>
-        Dessa forma, o efeito janeiro no Brasil deve ser interpretado como uma <b>evidência econômica plausível,
-        porém com robustez estatística moderada</b>, e não como uma anomalia forte e estável ao longo do tempo.
+        Além disso, a interpretação deve respeitar a proxy utilizada:
+        o projeto fala de <b>menor liquidez como proxy de tamanho</b>,
+        e não de small caps medidas diretamente por market cap.
+        Isso não invalida o estudo, mas delimita com mais precisão o escopo da evidência encontrada.
     </p>
 
     <h3>Principais aprendizados</h3>
     <ul>
-        <li>Janeiro apresentou o maior spread médio entre as janelas analisadas.</li>
-        <li>O efeito possui suporte estatístico, mas próximo ao limite de significância.</li>
-        <li>O ano de 2020 (dez/2019 → jan/2020) teve impacto relevante nos resultados.</li>
-        <li>O efeito não está diretamente ligado ao período mais agudo da pandemia.</li>
-        <li>Há consistência econômica, mas não total robustez estatística.</li>
-        <li>O comportamento pode depender de condições específicas de mercado.</li>
+        <li>A janela <b>dezembro→janeiro</b> apresentou o maior spread médio do estudo.</li>
+        <li>O spread da janela principal foi positivo em <b>66.7%</b> dos anos analisados.</li>
+        <li>Nos testes contra zero, dezembro→janeiro apresentou evidência estatística favorável.</li>
+        <li>A comparação pareada contra janelas de controle enfraqueceu a força da conclusão.</li>
+        <li>A melhor comparação foi contra <b>mar_abr</b>, mas sem robustez após Holm.</li>
+        <li>O ano de <b>2020</b> teve peso relevante na magnitude observada da janela principal.</li>
+        <li>O estudo sustenta melhor uma <b>evidência econômica plausível</b> do que uma superioridade estatística definitiva.</li>
+        <li>A leitura correta é feita em termos de <b>proxy por liquidez</b>, e não market cap observado diretamente.</li>
     </ul>
 </div>
 
         </div>
 
         <div class="footer">
-            <p>HTML gerado automaticamente a partir dos outputs do projeto.</p>
+            <p>HTML gerado automaticamente a partir das saídas do projeto.</p>
         </div>
     </div>
 
